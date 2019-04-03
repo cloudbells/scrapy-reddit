@@ -10,7 +10,7 @@ class TestSpider(scrapy.Spider):
     start_urls = ['https://www.reddit.com/r/AskReddit/comments/b0e6ty/whats_an_oh_shit_moment_where_you_realised_youve/']
 
     def __init__(self):
-        self.driver = webdriver.Firefox(executable_path='/Users/Oskar/Desktop/firefoxdriver/geckodriver.exe')
+        self.driver = webdriver.Firefox(executable_path='geckodriver.exe')
         
 
     def parse(self, response):
@@ -54,8 +54,12 @@ class TestSpider(scrapy.Spider):
                 f.write(self.driver.page_source)
             
             for e in elements:
-                e.click()
-            
+                try:
+                    e.click()
+                except Exception as ex:
+                    print("caught" + str(ex))
+                    continue
+                    
             sleep(5)
             filename = 'test3.html'
             with open(filename, 'a', encoding='utf8') as f:
