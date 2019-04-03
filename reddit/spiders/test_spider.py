@@ -54,8 +54,12 @@ class TestSpider(scrapy.Spider):
                 f.write(self.driver.page_source)
             
             for e in elements:
-                e.click()
-            
+                try:
+                    e.click()
+                except Exception as ex:
+                    print("caught" + str(ex))
+                    continue
+                    
             sleep(5)
             filename = 'test3.html'
             with open(filename, 'a', encoding='utf8') as f:
