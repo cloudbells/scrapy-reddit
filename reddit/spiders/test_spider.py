@@ -10,7 +10,7 @@ class TestSpider(scrapy.Spider):
     start_urls = ['https://www.reddit.com/r/AskReddit/comments/b0e6ty/whats_an_oh_shit_moment_where_you_realised_youve/']
 
     def __init__(self):
-        self.driver = webdriver.Firefox(executable_path='/Users/Oskar/Desktop/firefoxdriver/geckodriver.exe')
+        self.driver = webdriver.Firefox(executable_path='geckodriver.exe')
         
 
     def parse(self, response):
