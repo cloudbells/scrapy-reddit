@@ -10,13 +10,15 @@ class TestSpider(scrapy.Spider):
     start_urls = ['https://www.reddit.com/r/AskReddit/comments/b0e6ty/whats_an_oh_shit_moment_where_you_realised_youve/']
 
     def __init__(self):
-        self.driver = webdriver.Firefox(executable_path='geckodriver.exe')
+        _browser_profile = webdriver.FirefoxProfile()
+        _browser_profile.set_preference("dom.webnotifications.enabled", False)
+        self.driver = webdriver.Firefox(firefox_profile =_browser_profile, executable_path='geckodriver.exe')
         
 
     def parse(self, response):
         self.driver.get(response.url)
         
-        sleep(60)
+        # sleep(60)
 
         page_loaded = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.XPATH, "//*[contains(@id, 'moreComments')]"))
@@ -41,14 +43,19 @@ class TestSpider(scrapy.Spider):
             print(len(elements))
             print("-------------------------------")
             print("LOOK HERE")
-            divs = self.driver.find_element_by_xpath("//*[contains(@id, 'SHORTCUT_FOCUSABLE_DIV')]/div[2]/div/div/div/div[2]/div[3]/div[1]/div/div[5]/div/div/div/div[400]")
+            
             # print(len(divs))
-            print(divs)
+            # print(divs)
 
-            clickdiv = self.driver.find_elements_by_xpath("//*[contains(@id, 'SHORTCUT_FOCUSABLE_DIV')]/div[2]/div/div/div/div[2]/div[3]/div[1]/div/div[5]/div/div/div/div[400]")[0]
-            clickdiv.click()
-            print(clickdiv)
-            sleep(5)
+            try:
+                divs = self.driver.find_element_by_xpath("//*[contains(@id, 'SHORTCUT_FOCUSABLE_DIV')]/div[2]/div/div/div/div[2]/div[3]/div[1]/div/div[5]/div/div/div/div[400]")
+                clickdiv = self.driver.find_elements_by_xpath("//*[contains(@id, 'SHORTCUT_FOCUSABLE_DIV')]/div[2]/div/div/div/div[2]/div[3]/div[1]/div/div[5]/div/div/div/div[400]")[0]
+                clickdiv.click()
+                print(clickdiv)
+                sleep(5)
+            except Exception as ex:
+                print("!!!!!!!!!!!!!!!!!!!!!!" + str(ex))
+            
             filename = 'test2.html'
             with open(filename, 'a', encoding='utf8') as f:
                 f.write(self.driver.page_source)
