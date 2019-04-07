@@ -9,28 +9,22 @@ class TestSpider(scrapy.Spider):
     name = "test"
     start_urls = ['https://www.reddit.com/r/cloudbells/comments/b8yvk7/test2/']
 
-
-
     def __init__(self):
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
         self.driver = webdriver.Firefox(firefox_profile =_browser_profile, executable_path='geckodriver.exe')
-        
 
     def parse(self, response):
         self.driver.get(response.url)
-        
-        # sleep(60)
-
+        # page_loaded will be True if it finds the element within 10 seconds, False otherwise.
         page_loaded = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.XPATH, "//*[contains(@id, 'moreComments')]"))
         )
-
-        if True:
+        if page_loaded:
+            # Find and click the cookies button.
             cookiesBtn = self.driver.find_element_by_xpath("//button[@type='submit'][contains(text(), 'I Agree')]")
             cookiesBtn.click()
-
-            # elements = self.driver.find_elements((By.XPATH, "//*[contains(@id, 'moreComments')]"))
+            # Find all elements 
             elements = self.driver.find_elements_by_xpath("//*[contains(@id, 'moreComments')]")
             # print(elements)
             print("-------------------------------")
