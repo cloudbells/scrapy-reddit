@@ -9,7 +9,7 @@ from time import sleep
 class ThreadSpider(scrapy.Spider):
     name = "thread"
     start_urls = [
-        'https://www.reddit.com/r/AskReddit/comments/b0e6ty/whats_an_oh_shit_moment_where_you_realised_youve/']
+        'https://www.reddit.com/r/cloudbells/comments/b8yvk7/test2/'] # Testing Continue this thread
 
     def __init__(self):
         # This disables the browser asking for notifications.
@@ -20,19 +20,21 @@ class ThreadSpider(scrapy.Spider):
 
     def parse(self, response):
         self.driver.get(response.url)
-        # page_loaded will be True if it finds the element within 100 seconds, False otherwise.
-        page_loaded = WebDriverWait(self.driver, 100).until(
+        # page_loaded will be True if it finds the element within 10 seconds, False otherwise.
+        page_loaded = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
-                (By.XPATH, "//*[contains(@id, 'moreComments')]"))
+                #(By.XPATH, "//*[contains(@id, 'moreComments')]"))
+                (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
         )
         if page_loaded:
             # Find and click the cookies button.
             cookiesBtn = self.driver.find_element_by_xpath(
                 "//button[@type='submit'][contains(text(), 'I Agree')]")
             cookiesBtn.click()
-            self.saveHtml()
-            self.clickMoreComments()
-            self.continueThreads()
+            # self.saveHtml()
+            # self.clickMoreComments()
+            # self.clickDownvotedComments() <- should be in the same method as above
+        self.continueThreads()
 
     # Print to local file to see differences.
     def saveHtml(self):
@@ -40,7 +42,7 @@ class ThreadSpider(scrapy.Spider):
         with open(filename, 'a', encoding='utf8') as f:
             f.write(self.driver.page_source)
 
-    # This loop will continue until it does not find any more elements to click.
+    # This loop will continue until it does not find any more More replies to click.
     def clickMoreComments(self):
         loop = True
         while (loop):
@@ -60,5 +62,17 @@ class ThreadSpider(scrapy.Spider):
             else:
                 loop = False
 
+    # This loop will continue until it does not find any more Continue This Thread elements.
     def continueThreads(self):
-        
+        loop = True
+        while (loop):
+            continue_elements = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located(
+                    (By.XPATH, "//span[text()='Continue this thread']")
+                )
+            )
+            if continue_elements:
+                print("FOUND ELEMENTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            else:
+                print("FOUND ELEMENTS???????????????????????????????????????????????????????")
+                loop = False
