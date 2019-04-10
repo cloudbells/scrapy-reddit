@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.firefox.options import Options
 from time import sleep
 
 class ThreadSpider(scrapy.Spider):
@@ -22,10 +23,12 @@ class ThreadSpider(scrapy.Spider):
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseDynamic(self, response):
         # This disables the browser asking for notifications.
+        options = Options()
+        options.add_argument("--headless")
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
         self.driver = webdriver.Firefox(
-            firefox_profile=_browser_profile, executable_path='geckodriver.exe')
+            firefox_profile=_browser_profile, executable_path='geckodriver.exe', firefox_options=options)
         self.driver.get(response.url)
         # page_loaded will be True if it finds the element within 10 seconds, False otherwise.
         page_loaded = WebDriverWait(self.driver, 10).until(
