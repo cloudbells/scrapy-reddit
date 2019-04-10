@@ -47,6 +47,7 @@ class ThreadSpider(scrapy.Spider):
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseStatic(self, response):
         pass
+        #TODO Find all threads, and also this method
         # maybe press i agree
         # self.continueThreads(response)
 
