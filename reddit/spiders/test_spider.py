@@ -7,36 +7,24 @@ from time import sleep
 
 class TestSpider(scrapy.Spider):
     name = "test"
-    start_urls = ['https://www.reddit.com/r/AskReddit/comments/b0e6ty/whats_an_oh_shit_moment_where_you_realised_youve/']
+    start_urls = ['https://www.reddit.com/r/cloudbells/comments/b8yvk7/test2/']
 
     def __init__(self):
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
         self.driver = webdriver.Firefox(firefox_profile =_browser_profile, executable_path='geckodriver.exe')
-        
 
     def parse(self, response):
         self.driver.get(response.url)
-        
-        # sleep(60)
-
+        # page_loaded will be True if it finds the element within 10 seconds, False otherwise.
         page_loaded = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.XPATH, "//*[contains(@id, 'moreComments')]"))
         )
-
         if page_loaded:
-            print("----------------------------------------------------------It worked")
-            print("----------------------------------------------------------It worked")
-            print("----------------------------------------------------------It worked")
-            print("----------------------------------------------------------It worked")
-            print("----------------------------------------------------------It worked")
-            
-            filename = 'test.html'
-            print(self.driver.page_source)
-            with open(filename, 'a', encoding='utf8') as f:
-                f.write(self.driver.page_source)
-
-            # elements = self.driver.find_elements((By.XPATH, "//*[contains(@id, 'moreComments')]"))
+            # Find and click the cookies button.
+            cookiesBtn = self.driver.find_element_by_xpath("//button[@type='submit'][contains(text(), 'I Agree')]")
+            cookiesBtn.click()
+            # Find all elements 
             elements = self.driver.find_elements_by_xpath("//*[contains(@id, 'moreComments')]")
             # print(elements)
             print("-------------------------------")
@@ -62,16 +50,14 @@ class TestSpider(scrapy.Spider):
             
             for e in elements:
                 try:
-                    e.click()
+                    print("???????????????????????????????????????????????????????")
+                    print(c)
+                    print(str(c))
+                    print("???????????????????????????????????????????????????????")
+                    self.driver.get(str(c))
                 except Exception as ex:
-                    print("caught" + str(ex))
+                    print("caught " + str(ex))
                     continue
-                    
-            sleep(5)
-            filename = 'test3.html'
-            with open(filename, 'a', encoding='utf8') as f:
-                f.write(self.driver.page_source)
-            print("-------------------------------")
 
         else:
             print("----------------------------------------------------------It didn't")
@@ -79,4 +65,6 @@ class TestSpider(scrapy.Spider):
             print("----------------------------------------------------------It didn't")
             print("----------------------------------------------------------It didn't")
             print("----------------------------------------------------------It didn't")
+        
+        
         

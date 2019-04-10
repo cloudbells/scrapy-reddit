@@ -2,3 +2,6 @@
 *.html
 *.log
 *.exe
+geckodriver.log
+.vscode/
+__pycache__/
