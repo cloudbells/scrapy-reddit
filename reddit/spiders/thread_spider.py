@@ -6,19 +6,34 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 from time import sleep
+import logging
+
+#TODO:  Spider to find threads which is then sent to this spider
+#       Static method
+#
+#       User config: choose to scrape downvoted comments (WILL INCREASE RUNTIME)
+#       User config: choose keywords
+#       User config: 
 
 class ThreadSpider(scrapy.Spider):
     name = "thread"
+    counter = 0
     start_urls = [
-        'https://www.reddit.com/r/worldnews/comments/bbi4e1/parents_cannot_veto_sex_education_lessons_uk/']  # Testing Continue this thread
+        'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']  # Testing Continue this thread
 
     def parse(self, response):
-        if self.checkDynamic(response):
+        self.counter += 1
+        if self.checkDynamic(response): # Dynamic.
             print("DYNAMICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
             self.parseDynamic(response)
-        else:
+        else: # Static.
             print("STATIKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
-            self.parseStatic(response)
+            hrefList = self.parseStatic(response)
+            if len(hrefList) != 0:
+                for h in hrefList:
+                    print(h)
+                    yield response.follow(h, callback=self.parse)
+        print(self.counter)
 
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseDynamic(self, response):
@@ -41,15 +56,36 @@ class ThreadSpider(scrapy.Spider):
                 "//button[@type='submit'][contains(text(), 'I Agree')]")
             cookiesBtn.click()
             self.clickMoreComments()
-            self.continueThreads(response)
+            self.continueDynamic(response)
         self.driver.close()
 
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseStatic(self, response):
-        pass
-        #TODO Find all threads, and also this method
-        # maybe press i agree
-        # self.continueThreads(response)
+        return self.continueStatic(response)
+
+    # This loop will continue until it does not find any more Continue This Thread elements.
+    def continueDynamic(self, response):
+        continue_elements = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located(
+                (By.XPATH, "//span[text()='Continue this thread']")
+            )
+        )
+        if continue_elements:
+            cont = self.driver.find_elements_by_xpath(
+                "//span[text()='Continue this thread']/..")
+            for c in cont:
+                href = c.get_attribute("href")
+                with open("test.txt", 'a', encoding='utf8') as f:
+                    f.write(str(c))
+                yield response.follow(href, callback=self.parse)
+
+    def continueStatic(self, response):
+        print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
+        href = response.xpath("//span[text()='Continue this thread']/../@href").getall()
+        hList = []
+        for h in href:
+            hList.append(h)
+        return hList
 
     # Returns true if page is dynamic, false otherwise
     def checkDynamic(self, response):
@@ -89,17 +125,3 @@ class ThreadSpider(scrapy.Spider):
                 d.click()
             except Exception as ex:
                 print(str(ex))
-
-    # This loop will continue until it does not find any more Continue This Thread elements.
-    def continueThreads(self, response):
-        continue_elements = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_all_elements_located(
-                (By.XPATH, "//span[text()='Continue this thread']")
-            )
-        )
-        if continue_elements:
-            cont = self.driver.find_elements_by_xpath(
-                "//span[text()='Continue this thread']/..")
-            for c in cont:
-                href = c.get_attribute("href")
-                yield response.follow(href, callback=self.parse)
