@@ -9,7 +9,7 @@ from time import sleep
 import logging
 
 #TODO:  Spider to find threads which is then sent to this spider
-#       Static method
+#       Save comments
 #
 #       User config: choose to scrape downvoted comments (WILL INCREASE RUNTIME)
 #       User config: choose keywords
@@ -19,7 +19,7 @@ class ThreadSpider(scrapy.Spider):
     name = "thread"
     counter = 0
     start_urls = [
-        'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']  # Testing Continue this thread
+        'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']
 
     def parse(self, response):
         if self.checkDynamic(response): # Dynamic.
@@ -85,6 +85,7 @@ class ThreadSpider(scrapy.Spider):
                 hrefList.append(href)
             return hrefList
 
+    # Finds "continue this thread" elements statically.
     def continueStatic(self, response):
         href = response.xpath("//span[text()='Continue this thread']/../@href").getall()
         hList = []
