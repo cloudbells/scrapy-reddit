@@ -55,6 +55,9 @@ class ThreadSpider(scrapy.Spider):
             cookiesBtn = self.driver.find_element_by_xpath(
                 "//button[@type='submit'][contains(text(), 'I Agree')]")
             cookiesBtn.click()
+            commentsBtn = self.driver.find_element_by_xpath(
+                "//button[contains(text(), 'View all')]")
+            commentsBtn.click()
             self.clickMoreComments()
             self.continueDynamic(response)
         self.driver.close()
