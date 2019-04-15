@@ -22,18 +22,16 @@ class ThreadSpider(scrapy.Spider):
         'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']  # Testing Continue this thread
 
     def parse(self, response):
-        self.counter += 1
         if self.checkDynamic(response): # Dynamic.
             print("DYNAMICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
-            self.parseDynamic(response)
+            hrefList = self.parseDynamic(response)
         else: # Static.
             print("STATIKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
             hrefList = self.parseStatic(response)
-            if len(hrefList) != 0:
-                for h in hrefList:
-                    print(h)
-                    yield response.follow(h, callback=self.parse)
-        print(self.counter)
+        if len(hrefList) != 0:
+            for href in hrefList:
+                print(href)
+                yield response.follow(href, callback=self.parse)
 
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseDynamic(self, response):
@@ -50,6 +48,7 @@ class ThreadSpider(scrapy.Spider):
             EC.presence_of_all_elements_located(
                 (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
         )
+        hrefList = []
         if page_loaded:
             # Find and click the cookies button.
             cookiesBtn = self.driver.find_element_by_xpath(
@@ -59,8 +58,9 @@ class ThreadSpider(scrapy.Spider):
                 "//button[contains(text(), 'View all')]")
             commentsBtn.click()
             self.clickMoreComments()
-            self.continueDynamic(response)
+            hrefList = self.continueDynamic(response)
         self.driver.close()
+        return hrefList
 
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseStatic(self, response):
@@ -73,20 +73,24 @@ class ThreadSpider(scrapy.Spider):
                 (By.XPATH, "//span[text()='Continue this thread']")
             )
         )
+        print(continue_elements)
+        hrefList = []
         if continue_elements:
             cont = self.driver.find_elements_by_xpath(
                 "//span[text()='Continue this thread']/..")
             for c in cont:
                 href = c.get_attribute("href")
                 with open("test.txt", 'a', encoding='utf8') as f:
-                    f.write(str(c))
-                yield response.follow(href, callback=self.parse)
+                    f.write(href + "\n")
+                hrefList.append(href)
+            return hrefList
 
     def continueStatic(self, response):
-        print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
         href = response.xpath("//span[text()='Continue this thread']/../@href").getall()
         hList = []
         for h in href:
+            with open("test.txt", 'a', encoding='utf8') as f:
+                f.write(h)
             hList.append(h)
         return hList
 
