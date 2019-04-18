@@ -47,17 +47,11 @@ class ThreadSpider(scrapy.Spider):
     def getNextUrl(self):
         threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
         urls = []
-        finalurls = []
 
         for url in threadUrls:
-            urls.append(url.get_attribute("href"))
-        
-        for url in urls:
-            if url in self.visitedUrls:
-                pass
-            else:
-                self.visitedUrls.append(url)
-                finalurls.append(url)
+            if url.get_attribute("href") not in self.visitedUrls:
+                self.visitedUrls.append(url.get_attribute("href"))
+                urls.append(url.get_attribute("href"))
 
         return urls
 
