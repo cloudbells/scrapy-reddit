@@ -21,6 +21,30 @@ class ThreadSpider(scrapy.Spider):
     start_urls = [
         'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']
 
+    def __init__(self, name=None, **kwargs):
+        self.startUrlDriver()
+
+    def startUrlDriver(self):
+        optionsurl = Options()
+        #optionsurl.add_argument("--headless")
+        _browser_profile = webdriver.FirefoxProfile()
+        _browser_profile.set_preference("dom.webnotifications.enabled", False)
+        self.urldriver = webdriver.Firefox(
+            firefox_profile=_browser_profile, executable_path='geckodriver.exe', firefox_options=optionsurl)
+        self.urldriver.get("https://www.reddit.com/r/askreddit")
+        page_loaded = WebDriverWait(self.urldriver, 10).until(
+            EC.presence_of_all_elements_located(
+                (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
+        )
+        if page_loaded:
+            # Find and click the cookies button.
+            cookiesBtn = self.urldriver.find_element_by_xpath(
+                "//button[@type='submit'][contains(text(), 'I Agree')]")
+            cookiesBtn.click()
+
+    def getNextUrl(self):
+        pass
+
     def parse(self, response):
         if self.checkDynamic(response): # Dynamic.
             print("DYNAMICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
@@ -28,16 +52,19 @@ class ThreadSpider(scrapy.Spider):
         else: # Static.
             print("STATIKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
             hrefList = self.parseStatic(response)
+        # hreflist for continue this thread
         if len(hrefList) != 0:
             for href in hrefList:
                 print(href)
                 yield response.follow(href, callback=self.parse)
+        # hreflist = 0, thread is done scraped
+        
 
     # Parses the HTML, treating it as if it contains dynamic content.
     def parseDynamic(self, response):
         # This disables the browser asking for notifications.
         options = Options()
-        options.add_argument("--headless")
+        #options.add_argument("--headless")
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
         self.driver = webdriver.Firefox(
