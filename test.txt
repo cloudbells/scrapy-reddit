@@ -1,114 +1,30 @@
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="729cab2d-6ec0-4716-883f-e06bcf5f756a")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="d612e7f3-95f8-41c0-8dcb-23306528dbae")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="def7b056-93d4-42ce-8fc2-5bbd22743bb1")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="209fed14-ee3a-44e7-ad1b-3b46fc35ab26")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="eb550fbf-2a6f-411f-a931-0e75e47e1df6")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="47d8a17a-1989-450a-b901-e39cf74369f1")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="2434ce89-09a7-497a-b22d-122705185622")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="7d708abe-3931-47bb-b78a-46e580f44225")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="2e4b2b87-9940-4181-a297-003704c764c1")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="d0699ec0-5532-4c95-a7d1-0bbda3907670")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="48e1b5ab-f12d-45e8-8522-c55a54fb7b7d")>
-<selenium.webdriver.firefox.webelement.FirefoxWebElement (session="ca31367d-38d6-4e35-ab8a-a658cdc13344", element="f7c097c6-fbe3-49ef-9e85-fee72d33baa5")>
-
-
-
-
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxs8jc
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxkao9
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxo8ed
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxtvm5
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxq51z
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxpumm
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxky15
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxop2z
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekx9xay
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekx9l67
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxq5jl
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxu57z
-
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxs8jc
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxkao9
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxo8ed
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxxd2u
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxxq0y
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxtvm5
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxxw49
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxq51z
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxpumm
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxky15
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxop2z
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekx9xay
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekx9l67
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxq5jl
-https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/ekxu57z/r/cloudbells/comments/b8yvk7/test2/ek0xz4k
-
-
-
-
-
 https://www.reddit.com/r/cloudbells/comments/30hau3/test/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd7a9f/various_artists_the_hired_hands_a_tribute_to/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdv9eh/thoughts_on_prince_sideprojects_and_albums/
-https://www.reddit.com/r/LetsTalkMusic/comments/be0px0/wheres_the_line_where_heavy_music_is_no_longer/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdx8rd/zeuhl_is_my_new_favorite_genre/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdu4ug/anyone_else_feel_like_production_is_the_end_all/
-https://www.reddit.com/r/LetsTalkMusic/comments/beelmo/where_does_kanye_fall_in_alltime_lists/
-https://www.reddit.com/r/LetsTalkMusic/comments/beez3s/lets_talk_genre_in_pop_music_and_why_old_town/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdr4oh/im_looking_for_the_best_way_to_support_artists/
-https://www.reddit.com/comments/be2srq/ready_to_become_the_lord_of_the_seven_kingdoms/?instanceId=t3_q%3DCgADCLlLEvdLKDIKAAUiAkNpHwAmHggABwAAAAEKAAwIuUsaT0xNQwA%3D%26s%3DfOFxi8qWoZtO9JMNhjTgMNl_bg9zKAAwaq-K3qbU_PE%3D
-https://www.reddit.com/r/LetsTalkMusic/comments/bebk8z/more_indepth_discussion_of_historic_development/
-https://www.reddit.com/r/LetsTalkMusic/comments/be8fu8/floaty_repetitive_ecstatic_lofi_psychedelic/
-https://www.reddit.com/r/LetsTalkMusic/comments/behy2z/live_albums_dubs_vs_flubs/
-https://www.reddit.com/r/LetsTalkMusic/comments/begtix/the_rise_and_fall_of_skits_in_rap_albums/
-https://www.reddit.com/r/LetsTalkMusic/comments/beeq6h/albums_where_the_final_moments_are_the_very_best/
-https://www.reddit.com/r/LetsTalkMusic/comments/be8zev/what_have_you_been_listening_to_april_17_2019/
-https://www.reddit.com/r/LetsTalkMusic/comments/bct451/ive_noticed_a_formulaic_comparison_between_the/
-https://www.reddit.com/r/LetsTalkMusic/comments/bcsyfp/is_there_a_song_or_album_you_loved_but_now_its/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdbl8a/albums_of_the_decade/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd0wvg/nerds_in_search_of_euro_release_vs_us_release_a/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd8h0q/is_that_a_specific_type_or_genre_of_music/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd7j16/thoughts_on_classicalneoclassical_minimalism/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdh5aq/music_soundsflatter/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd92lu/lets_talk_either_bsides_of_entire_albums_or_david/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdmm8q/what_would_you_have_to_change_about_old_town_road/
-https://www.reddit.com/comments/ado08v/get_reddit_premium_for_the_finest_reddit/?instanceId=t3_q%3DCgADB7oPvQWl6a8KAAUiAkNpHxYmHggABwAAAAEKAAwHug-9dg-thAA%3D%26s%3Dp9VzSP5uRQ1m6vJdQaPOqzES_JVWaiTWJGCKHbJs-3k%3D
-https://www.reddit.com/r/LetsTalkMusic/comments/bdndrx/the_band_what_do_you_like_most_about_them/
-https://www.reddit.com/r/LetsTalkMusic/comments/bchugf/sandinista_by_the_clash/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdlagq/scott_walker_is_amazing_and_heres_why/
-https://www.reddit.com/r/LetsTalkMusic/comments/bcph1g/ever_gained_new_appreciation_of_an_artist_after/
-
-
-
-
-
-https://www.reddit.com/r/cloudbells/comments/30hau3/test/
 https://www.reddit.com/r/LetsTalkMusic/comments/bd7a9f/various_artists_the_hired_hands_a_tribute_to/
-https://www.reddit.com/comments/be2u5t/ready_to_become_the_lord_of_the_seven_kingdoms/?instanceId=t3_q%3DCgADCLlLEvdLKDIKAAUiAlB_qBY_SggABwAAAAEKAAwIuUzsCRz_oAA%3D%26s%3DmDNiPk4zyHarlP943Eqqg__RYH5LF9xeUXSIQeVCzfc%3D
 https://www.reddit.com/r/LetsTalkMusic/comments/beelmo/where_does_kanye_fall_in_alltime_lists/
-https://www.reddit.com/r/LetsTalkMusic/comments/behy2z/live_albums_dubs_vs_flubs/
-https://www.reddit.com/r/LetsTalkMusic/comments/be8fu8/floaty_repetitive_ecstatic_lofi_psychedelic/
-https://www.reddit.com/r/LetsTalkMusic/comments/begtix/the_rise_and_fall_of_skits_in_rap_albums/
-https://www.reddit.com/r/LetsTalkMusic/comments/beez3s/lets_talk_genre_in_pop_music_and_why_old_town/
 https://www.reddit.com/r/LetsTalkMusic/comments/bebk8z/more_indepth_discussion_of_historic_development/
-https://www.reddit.com/comments/ado0ym/use_reddit_coins_to_award_gold_to_your_favorite/?instanceId=t3_q%3DCgADB7oPvQWl6a8KAAUiAlB_qEI_SggABwAAAAEKAAwHuhCsNKeQ0wA%3D%26s%3DZImaT_nGdYkmAC2XXgofxyC8bd3-xTZoZuZ-UKas5BU%3D
+https://www.reddit.com/r/LetsTalkMusic/comments/bemdox/how_to_make_drum_samples_fit_with_melody/
+https://www.reddit.com/r/LetsTalkMusic/comments/bdx8rd/zeuhl_is_my_new_favorite_genre/
+https://www.reddit.com/r/LetsTalkMusic/comments/be8fu8/floaty_repetitive_ecstatic_lofi_psychedelic/
+https://www.reddit.com/r/LetsTalkMusic/comments/beez3s/lets_talk_genre_in_pop_music_and_why_old_town/
+https://www.reddit.com/r/LetsTalkMusic/comments/bdu4ug/anyone_else_feel_like_production_is_the_end_all/
+https://www.reddit.com/r/LetsTalkMusic/comments/be0px0/wheres_the_line_where_heavy_music_is_no_longer/
+https://www.reddit.com/r/LetsTalkMusic/comments/behy2z/live_albums_dubs_vs_flubs/
+https://www.reddit.com/comments/be2u5t/ready_to_become_the_lord_of_the_seven_kingdoms/?instanceId=t3_q%3DCgADCLlLEvdLKDIKAAUiAm58fgB06AgABwAAAAEKAAwIuUzsCRz_oAA%3D%26s%3DGIwCAFPyAY3HuIIS8duQtQ6fA_qxMg5VfBT9v5a6JYs%3D
+https://www.reddit.com/r/LetsTalkMusic/comments/begtix/the_rise_and_fall_of_skits_in_rap_albums/
 https://www.reddit.com/r/LetsTalkMusic/comments/beeq6h/albums_where_the_final_moments_are_the_very_best/
-https://www.reddit.com/r/LetsTalkMusic/comments/bd92lu/lets_talk_either_bsides_of_entire_albums_or_david/
+https://www.reddit.com/comments/ado0ym/use_reddit_coins_to_award_gold_to_your_favorite/?instanceId=t3_q%3DCgADB7oPvQWl6a8KAAUiAm58fwB06AgABwAAAAEKAAwHuhCsNKeQ0wA%3D%26s%3DbDwQGE0w4l8mATB8CiqgQacvmdNG97Gpsh_3hAvaQSY%3D
 https://www.reddit.com/r/LetsTalkMusic/comments/be8zev/what_have_you_been_listening_to_april_17_2019/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdmm8q/what_would_you_have_to_change_about_old_town_road/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdndrx/the_band_what_do_you_like_most_about_them/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdlagq/scott_walker_is_amazing_and_heres_why/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdr4oh/im_looking_for_the_best_way_to_support_artists/
+https://www.reddit.com/r/LetsTalkMusic/comments/bdmm8q/what_would_you_have_to_change_about_old_town_road/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdbl8a/albums_of_the_decade/
-https://www.reddit.com/r/LetsTalkMusic/comments/bcsyfp/is_there_a_song_or_album_you_loved_but_now_its/
-https://www.reddit.com/r/LetsTalkMusic/comments/bchugf/sandinista_by_the_clash/
 https://www.reddit.com/r/LetsTalkMusic/comments/bcph1g/ever_gained_new_appreciation_of_an_artist_after/
-https://www.reddit.com/r/LetsTalkMusic/comments/bct451/ive_noticed_a_formulaic_comparison_between_the/
 https://www.reddit.com/r/LetsTalkMusic/comments/bd0wvg/nerds_in_search_of_euro_release_vs_us_release_a/
+https://www.reddit.com/r/LetsTalkMusic/comments/bct451/ive_noticed_a_formulaic_comparison_between_the/
 https://www.reddit.com/r/LetsTalkMusic/comments/bd8h0q/is_that_a_specific_type_or_genre_of_music/
+https://www.reddit.com/r/LetsTalkMusic/comments/bcsyfp/is_there_a_song_or_album_you_loved_but_now_its/
 https://www.reddit.com/r/LetsTalkMusic/comments/bd7j16/thoughts_on_classicalneoclassical_minimalism/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdx8rd/zeuhl_is_my_new_favorite_genre/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdu4ug/anyone_else_feel_like_production_is_the_end_all/
-https://www.reddit.com/r/LetsTalkMusic/comments/be0px0/wheres_the_line_where_heavy_music_is_no_longer/
 https://www.reddit.com/r/LetsTalkMusic/comments/bdh5aq/music_soundsflatter/
-https://www.reddit.com/r/LetsTalkMusic/comments/bdv9eh/thoughts_on_prince_sideprojects_and_albums/
+https://www.reddit.com/r/LetsTalkMusic/comments/bd92lu/lets_talk_either_bsides_of_entire_albums_or_david/

@@ -54,6 +54,12 @@ class ThreadSpider(scrapy.Spider):
                 urls.append(url.get_attribute("href"))
 
         return urls
+    
+    def scrollUrlDriver(self):
+        threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
+        element = threadUrls[-1]
+        element.location_once_scrolled_into_view
+        
 
     def parse(self, response):
         with open("test.txt", 'a', encoding='utf8') as f:
@@ -74,6 +80,7 @@ class ThreadSpider(scrapy.Spider):
         urls = self.getNextUrl()
         for url in urls:
             yield response.follow(url, callback=self.parse)
+        self.scrollUrlDriver()
 
         
 
