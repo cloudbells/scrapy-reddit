@@ -17,9 +17,9 @@ import logging
 
 class ThreadSpider(scrapy.Spider):
     name = "thread"
-    counter = 0
+    visitedUrls = []
     start_urls = [
-        'https://www.reddit.com/r/AskReddit/comments/bdbkde/lawyers_of_reddit_what_was_the_least_defendable/']
+        'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
 
     def __init__(self, name=None, **kwargs):
         self.startUrlDriver()
@@ -31,7 +31,7 @@ class ThreadSpider(scrapy.Spider):
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
         self.urldriver = webdriver.Firefox(
             firefox_profile=_browser_profile, executable_path='geckodriver.exe', firefox_options=optionsurl)
-        self.urldriver.get("https://www.reddit.com/r/askreddit")
+        self.urldriver.get("https://www.reddit.com/r/letstalkmusic")
         page_loaded = WebDriverWait(self.urldriver, 10).until(
             EC.presence_of_all_elements_located(
                 (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
@@ -43,9 +43,26 @@ class ThreadSpider(scrapy.Spider):
             cookiesBtn.click()
 
     def getNextUrl(self):
-        pass
+        threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
+        urls = []
+        finalurls = []
+
+        for url in threadUrls:
+            urls.append(url.get_attribute("href"))
+        
+        for url in urls:
+            if url in self.visitedUrls:
+                pass
+            else:
+                self.visitedUrls.append(url)
+                finalurls.append(url)
+
+        return urls
 
     def parse(self, response):
+        with open("test.txt", 'a', encoding='utf8') as f:
+                    f.write(response.url + "\n")
+
         if self.checkDynamic(response): # Dynamic.
             print("DYNAMICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
             hrefList = self.parseDynamic(response)
@@ -58,6 +75,10 @@ class ThreadSpider(scrapy.Spider):
                 print(href)
                 yield response.follow(href, callback=self.parse)
         # hreflist = 0, thread is done scraped
+        urls = self.getNextUrl()
+        for url in urls:
+            yield response.follow(url, callback=self.parse)
+
         
 
     # Parses the HTML, treating it as if it contains dynamic content.
