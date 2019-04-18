@@ -24,6 +24,7 @@ class ThreadSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         self.startUrlDriver()
 
+    # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):
         optionsurl = Options()
         #optionsurl.add_argument("--headless")
@@ -42,6 +43,7 @@ class ThreadSpider(scrapy.Spider):
                 "//button[@type='submit'][contains(text(), 'I Agree')]")
             cookiesBtn.click()
 
+    # Finds urls on subreddit and returns a list of url strings
     def getNextUrl(self):
         threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
         urls = []
