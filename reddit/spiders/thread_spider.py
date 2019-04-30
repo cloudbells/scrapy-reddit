@@ -18,11 +18,12 @@ import logging
 class ThreadSpider(scrapy.Spider):
     name = "thread"
     visitedUrls = []
-    start_urls = [
-        'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
+    #start_urls = [
+    #    'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
 
     def __init__(self, name=None, **kwargs):
         self.startUrlDriver()
+        self.start_urls = self.getNextUrl()
 
     # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):
@@ -80,7 +81,6 @@ class ThreadSpider(scrapy.Spider):
         urls = self.getNextUrl()
         for url in urls:
             yield response.follow(url, callback=self.parse)
-        self.scrollUrlDriver()
 
         
 
