@@ -24,11 +24,12 @@ class ThreadSpider(scrapy.Spider):
     #    'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
 
     def __init__(self, name=None, **kwargs):
-        self.startUrlDriver()
-        self.start_urls = self.getNextUrl()
         with open('config.json') as con:
             self.config = json.load(con)
-
+        self.startUrlDriver()
+        self.start_urls = self.getNextUrl()
+            #for xpath in self.config["xpath"]["urlDriverLoad"]:
+             #   print(str(xpath))
 
     # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):
@@ -39,15 +40,12 @@ class ThreadSpider(scrapy.Spider):
         self.urldriver = webdriver.Firefox(
             firefox_profile=_browser_profile, executable_path='geckodriver.exe', firefox_options=optionsurl)
         self.urldriver.get("https://www.reddit.com/r/letstalkmusic")
-        page_loaded = WebDriverWait(self.urldriver, 10).until(
-            EC.presence_of_all_elements_located(
-                (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
-        )
-        if page_loaded:
-            # Find and click the cookies button.
-            cookiesBtn = self.urldriver.find_element_by_xpath(
-                "//button[@type='submit'][contains(text(), 'I Agree')]")
-            cookiesBtn.click()
+        for xpath in self.config["xpath"]["urlDriverLoad"]:
+            page_loaded = WebDriverWait(self.urldriver, 10).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+            if page_loaded:
+                # Find and click the button.
+                button = self.urldriver.find_element_by_xpath(xpath)
+                button.click()
 
     # Finds urls on subreddit and returns a list of url strings
     def getNextUrl(self):
