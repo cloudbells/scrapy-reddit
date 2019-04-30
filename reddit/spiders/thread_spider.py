@@ -53,7 +53,6 @@ class ThreadSpider(scrapy.Spider):
             if url.get_attribute("href") not in self.visitedUrls:
                 self.visitedUrls.append(url.get_attribute("href"))
                 urls.append(url.get_attribute("href"))
-
         return urls
     
     def scrollUrlDriver(self):
@@ -81,7 +80,7 @@ class ThreadSpider(scrapy.Spider):
         urls = self.getNextUrl()
         for url in urls:
             yield response.follow(url, callback=self.parse)
-
+        self.scrollUrlDriver()
         
 
     # Parses the HTML, treating it as if it contains dynamic content.
