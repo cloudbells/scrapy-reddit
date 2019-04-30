@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
 from time import sleep
 import logging
+import json
 
 #TODO:  Spider to find threads which is then sent to this spider
 #       Save comments
@@ -18,12 +19,16 @@ import logging
 class ThreadSpider(scrapy.Spider):
     name = "thread"
     visitedUrls = []
+    config = {}
     #start_urls = [
     #    'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
 
     def __init__(self, name=None, **kwargs):
         self.startUrlDriver()
         self.start_urls = self.getNextUrl()
+        with open('config.json') as con:
+            self.config = json.load(con)
+
 
     # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):

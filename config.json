@@ -1,35 +1,35 @@
 {
-	"saveDownvoted": true,
-	"visitInterval": 300,
-	"requestInterval": 5,
-	"subreddits": [
-		"askreddit",
-		"worldnews"
-	],
-	"keywords": [
-		"work",
-		"china",
-		"bad"
-	],
-	"xpath": {
-		"urlDriverLoad": [
-			"//button[@type='submit'][contains(text(), 'I Agree')]"
-		],
-		"urlXPath": "//a[contains(@data-click-id, 'comments')]",
-		"threadDriverLoad": [
-			"//button[@type='submit'][contains(text(), 'I Agree')]",
-			"//button[contains(text(), 'View all')]"
-		],
-		"threadDriverLoadComments": [
-			"//*[contains(@id, 'moreComments')]",
-			"//div/button/i[contains(@class, 'icon-expand')]"
-		],
-		"threadDriverContinueThread": "//span[text()='Continue this thread']",
-		"content": {
-			"username": "//div[contains(@class, 'Comment')]/div[2]/div[1]/div/a/text()",
-			"score": "//div[contains(@class, 'Comment')]/div[2]/div[1]/span[1]/text()",
-			"timestamp": "//div[contains(@class, 'Comment')]/div[2]/div[1]/a/span/text()",
-			"quote": "//div[contains(@class, 'Comment')]/div[2]/div[2]/div//p/text()"
-		}
-	}
+    "saveDownvoted": true,
+    "visitInterval": 300,
+    "requestInterval": 5,
+    "subreddits": [
+        "askreddit",
+        "worldnews"
+    ],
+    "keywords": [
+        "work",
+        "china",
+        "bad"
+    ],
+    "xpath": {
+        "urlDriverLoad": [
+            "//button[@type='submit'][contains(text(), 'I Agree')]"
+        ],
+        "urlXPath": "//a[contains(@data-click-id, 'comments')]",
+        "threadDriverLoad": [
+            "//button[@type='submit'][contains(text(), 'I Agree')]",
+            "//button[contains(text(), 'View all')]"
+        ],
+        "threadDriverLoadComments": [
+            "//*[contains(@id, 'moreComments')]",
+            "//div/button/i[contains(@class, 'icon-expand')]"
+        ],
+        "threadDriverContinueThread": "//span[text()='Continue this thread']",
+        "content": {
+            "username": "//div[contains(@class, 'Comment')]/div[2]/div[1]/div/a/text()",
+            "score": "//div[contains(@class, 'Comment')]/div[2]/div[1]/span[1]/text()",
+            "timestamp": "//div[contains(@class, 'Comment')]/div[2]/div[1]/a/span/text()",
+            "quote": "//div[contains(@class, 'Comment')]/div[2]/div[2]/div//p/text()"
+        }
+    }
 }
