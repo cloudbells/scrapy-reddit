@@ -1,4 +1,4 @@
-"settings" = {
+{
 	"saveDownvoted": true,
 	"visitInterval": 300,
 	"requestInterval": 5,
@@ -11,7 +11,7 @@
 		"china",
 		"bad"
 	],
-	"xpath": [
+	"xpath": {
 		"urlDriverLoad": [
 			"//button[@type='submit'][contains(text(), 'I Agree')]"
 		],
@@ -26,10 +26,10 @@
 		],
 		"threadDriverContinueThread": "//span[text()='Continue this thread']",
 		"content": {
-			"username": "//div[contains(@class, "Comment")]/div[2]/div[1]/div/a/text()",
-			"score": "//div[contains(@class, "Comment")]/div[2]/div[1]/span[1]/text()",
-			"timestamp": "//div[contains(@class, "Comment")]/div[2]/div[1]/a/span/text()",
-			"quote": "//div[contains(@class, "Comment")]/div[2]/div[2]/div//p/text()"
+			"username": "//div[contains(@class, 'Comment')]/div[2]/div[1]/div/a/text()",
+			"score": "//div[contains(@class, 'Comment')]/div[2]/div[1]/span[1]/text()",
+			"timestamp": "//div[contains(@class, 'Comment')]/div[2]/div[1]/a/span/text()",
+			"quote": "//div[contains(@class, 'Comment')]/div[2]/div[2]/div//p/text()"
 		}
-	]
+	}
 }
