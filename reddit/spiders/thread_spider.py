@@ -67,19 +67,13 @@ class ThreadSpider(scrapy.Spider):
         
 
     def parse(self, response):
-        with open("test.txt", 'a', encoding='utf8') as f:
-                    f.write(response.url + "\n")
-
         if self.checkDynamic(response): # Dynamic.
-            print("DYNAMICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
             hrefList = self.parseDynamic(response)
         else: # Static.
-            print("STATIKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
             hrefList = self.parseStatic(response)
         # hreflist for continue this thread
         if len(hrefList) != 0:
             for href in hrefList:
-                print(href)
                 yield response.follow(href, callback=self.parse)
         # hreflist = 0, thread is done scraped
         urls = self.getNextUrl()
@@ -92,6 +86,7 @@ class ThreadSpider(scrapy.Spider):
     def parseDynamic(self, response):
         # This disables the browser asking for notifications.
         options = Options()
+        # Enable headless by removing comment below
         #options.add_argument("--headless")
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
@@ -134,8 +129,6 @@ class ThreadSpider(scrapy.Spider):
             cont = self.driver.find_elements_by_xpath(continuexpath)
             for c in cont:
                 href = c.get_attribute("href")
-                with open("test.txt", 'a', encoding='utf8') as f:
-                    f.write(href + "\n")
                 hrefList.append(href)
             return hrefList
 
@@ -146,8 +139,6 @@ class ThreadSpider(scrapy.Spider):
         href = response.xpath(continuexpath).getall()
         hList = []
         for h in href:
-            with open("test.txt", 'a', encoding='utf8') as f:
-                f.write(h)
             hList.append(h)
         return hList
 
