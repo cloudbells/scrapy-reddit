@@ -23,6 +23,7 @@ class ThreadSpider(scrapy.Spider):
     # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):
         optionsurl = Options()
+        # Enable headless by removing comment below
         #optionsurl.add_argument("--headless")
         _browser_profile = webdriver.FirefoxProfile()
         _browser_profile.set_preference("dom.webnotifications.enabled", False)
