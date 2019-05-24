@@ -9,27 +9,16 @@ from time import sleep
 import logging
 import json
 
-#TODO:  Spider to find threads which is then sent to this spider
-#       Save comments
-#
-#       User config: choose to scrape downvoted comments (WILL INCREASE RUNTIME)
-#       User config: choose keywords
-#       User config: 
-
 class ThreadSpider(scrapy.Spider):
     name = "thread"
     visitedUrls = []
     config = {}
-    #start_urls = [
-    #    'https://www.reddit.com/r/cloudbells/comments/30hau3/test/']
 
     def __init__(self, name=None, **kwargs):
         with open('config.json') as con:
             self.config = json.load(con)
         self.startUrlDriver()
         self.start_urls = self.getNextUrl()
-            #for xpath in self.config["xpath"]["urlDriverLoad"]:
-             #   print(str(xpath))
 
     # Starts the selenium urldriver and clicks cookies button
     def startUrlDriver(self):
