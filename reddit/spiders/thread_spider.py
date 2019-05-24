@@ -49,7 +49,8 @@ class ThreadSpider(scrapy.Spider):
 
     # Finds urls on subreddit and returns a list of url strings
     def getNextUrl(self):
-        threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
+        xpath = self.config["xpath"]["urlXPath"]
+        threadUrls = self.urldriver.find_elements_by_xpath(xpath)
         urls = []
 
         for url in threadUrls:
@@ -59,7 +60,8 @@ class ThreadSpider(scrapy.Spider):
         return urls
     
     def scrollUrlDriver(self):
-        threadUrls = self.urldriver.find_elements_by_xpath("//a[contains(@data-click-id, 'comments')]")
+        xpath = self.config["xpath"]["urlXPath"]
+        threadUrls = self.urldriver.find_elements_by_xpath(xpath)
         element = threadUrls[-1]
         element.location_once_scrolled_into_view
         
@@ -97,19 +99,17 @@ class ThreadSpider(scrapy.Spider):
             firefox_profile=_browser_profile, executable_path='geckodriver.exe', firefox_options=options)
         self.driver.get(response.url)
         # page_loaded will be True if it finds the element within 10 seconds, False otherwise.
+        xpath = self.config["xpath"]["threadDriverLoad"]
         page_loaded = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
-                (By.XPATH, "//button[@type='submit'][contains(text(), 'I Agree')]"))
+                (By.XPATH, xpath[0]))
         )
         hrefList = []
         if page_loaded:
             # Find and click the cookies button.
-            cookiesBtn = self.driver.find_element_by_xpath(
-                "//button[@type='submit'][contains(text(), 'I Agree')]")
-            cookiesBtn.click()
-            commentsBtn = self.driver.find_element_by_xpath(
-                "//button[contains(text(), 'View all')]")
-            commentsBtn.click()
+            for path in xpath:
+                button = self.driver.find_element_by_xpath(path)
+                button.click()
             self.clickMoreComments()
             hrefList = self.continueDynamic(response)
         self.driver.close()
