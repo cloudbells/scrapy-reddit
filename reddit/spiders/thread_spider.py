@@ -121,16 +121,17 @@ class ThreadSpider(scrapy.Spider):
 
     # This loop will continue until it does not find any more Continue This Thread elements.
     def continueDynamic(self, response):
+        continuexpath = self.config["xpath"]["threadDriverContinueThread"]
         continue_elements = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
-                (By.XPATH, "//span[text()='Continue this thread']")
+                (By.XPATH, continuexpath)
             )
         )
         print(continue_elements)
         hrefList = []
+        continuexpath += "/.."
         if continue_elements:
-            cont = self.driver.find_elements_by_xpath(
-                "//span[text()='Continue this thread']/..")
+            cont = self.driver.find_elements_by_xpath(continuexpath)
             for c in cont:
                 href = c.get_attribute("href")
                 with open("test.txt", 'a', encoding='utf8') as f:
@@ -140,7 +141,9 @@ class ThreadSpider(scrapy.Spider):
 
     # Finds "continue this thread" elements statically.
     def continueStatic(self, response):
-        href = response.xpath("//span[text()='Continue this thread']/../@href").getall()
+        continuexpath = self.config["xpath"]["threadDriverContinueThread"]
+        continuexpath += "/../@href"
+        href = response.xpath(continuexpath).getall()
         hList = []
         for h in href:
             with open("test.txt", 'a', encoding='utf8') as f:
@@ -150,16 +153,18 @@ class ThreadSpider(scrapy.Spider):
 
     # Returns true if page is dynamic, false otherwise
     def checkDynamic(self, response):
-        return len(response.xpath("//*[contains(@id, 'moreComments')]").getall()) != 0
+        xpath = self.config["xpath"]["threadDriverLoadComments"][0]
+        return len(response.xpath(xpath).getall()) != 0
 
     # This loop will continue until it does not find any more More replies to click.
     def clickMoreComments(self):
         loop = True
+        xpath = self.config["xpath"]["threadDriverLoadComments"][0]
         while (loop):
             try:
                 more_elements = WebDriverWait(self.driver, 10).until(
                     EC.presence_of_all_elements_located(
-                        (By.XPATH, "//*[contains(@id, 'moreComments')]"))
+                        (By.XPATH, xpath))
                 )
             except TimeoutException as te:
                 print(str(te))
@@ -167,7 +172,7 @@ class ThreadSpider(scrapy.Spider):
                 break
             if more_elements:
                 elements = self.driver.find_elements_by_xpath(
-                    "//*[contains(@id, 'moreComments')]")
+                    xpath)
                 for e in elements:
                     try:
                         e.click()
@@ -179,8 +184,9 @@ class ThreadSpider(scrapy.Spider):
 
     # Attempts to click downvoted comments.
     def clickDownvoted(self):
+        xpath = self.config["xpath"]["threadDriverLoadComments"][1]
         downvoted = self.driver.find_elements_by_xpath(
-            "//div/button/i[contains(@class, 'icon-expand')]")
+            xpath)
         for d in downvoted:
             try:
                 d.click()
